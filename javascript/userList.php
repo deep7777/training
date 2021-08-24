@@ -50,6 +50,7 @@ $conn->close();
         // https://api.jquery.com/jquery.ajax/
         // https://www.w3schools.com/jquery/ajax_ajax.asp
         // https://codebeautify.org/jsonviewer
+        // ********** url path should be changed as per your project set up *************
         $.ajax({
             url: "http://localhost:9000/javascript/getUserDetails.php?id="+id,
             success: function(result){
