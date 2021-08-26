@@ -27,7 +27,7 @@ $conn->close();
             <?php while($row = $result->fetch_assoc()) { ?>
                 <tr>
                     <td onclick="return getUserDetails(<?php echo $row["id"]; ?>)"><?php echo $row["id"]; ?></td>
-                    <td onclick="return getUserDetails()"><?php echo $row["first_name"]; ?></td>
+                    <td onclick="return getUserDetails(<?php echo $row["id"]; ?>)"><?php echo $row["first_name"]; ?></td>
                     <td><?php echo $row["last_name"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
                     <td><?php echo $row["mobile_no"]; ?></td>

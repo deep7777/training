@@ -27,7 +27,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
-    <a class="navbar-brand" href="#">Laravel</a>
+    <a class="navbar-brand" href="#">Php Training</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +45,7 @@
                                 <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="full_name" class="form-control" name="full-name">
+                                        <input class="full_name" type="text" id="full_name" class="form-control" name="full-name">
                                     </div>
                                 </div>
 
@@ -105,7 +105,7 @@
         </div>
     </div>  
 </main>
-<?php echo "hello"; ?>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -138,6 +138,10 @@ function validform() {
         alert("Please Enter Your NID Number");
         return false;
     }
+}
+
+function init() {
+    $("#full-name");
 }
 
 </script>
@@ -189,5 +193,9 @@ body{
 {
     margin-left: 0;
     margin-right: 0;
+}
+
+.full_name {
+    background-color: yellow;
 }
 </style
