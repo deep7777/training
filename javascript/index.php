@@ -27,7 +27,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
     <div class="container">
-    <a class="navbar-brand" href="#">Php Training</a>
+    <a class="navbar-brand" href="#">Laravel</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -45,7 +45,7 @@
                                 <div class="form-group row">
                                     <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                     <div class="col-md-6">
-                                        <input class="full_name" type="text" id="full_name" class="form-control" name="full-name">
+                                        <input type="text" id="full_name" class="form-control" name="full-name">
                                     </div>
                                 </div>
 
@@ -140,10 +140,6 @@ function validform() {
     }
 }
 
-function init() {
-    $("#full-name");
-}
-
 </script>
 </body>
 </html>
@@ -193,9 +189,5 @@ body{
 {
     margin-left: 0;
     margin-right: 0;
-}
-
-.full_name {
-    background-color: yellow;
 }
 </style
