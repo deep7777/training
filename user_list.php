@@ -6,7 +6,6 @@ $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 $conn->close();
 ?>
-
 <main class="page-content">
 <div class="container-fluid">
     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -18,6 +17,7 @@ $conn->close();
                 <th>Mobile Number</th>
                 <th>Address</th>
                 <th>Username</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +29,11 @@ $conn->close();
                     <td><?php echo $row["mobile_no"]; ?></td>
                     <td><?php echo $row["address"]; ?></td>
                     <td><?php echo $row["username"]; ?></td>
+                    <td>
+                        <button onclick="return deleteUser(<?php echo $row["id"]; ?>)" type="button" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Delete
+                        </button>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -43,6 +48,24 @@ $conn->close();
     $(document).ready(function() {
         $('#example').DataTable();
     });
+
+    function deleteUser(id) {
+        if (confirm("Press a button!")) {
+            console.log("ok Button Clicked");
+            $.ajax({
+                url: "http://localhost:9000/delete_user.php?id="+id,
+                success: function(result){
+                    console.log("response => "+result);
+                    $("#response").html(result);
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+        } else {
+            console.log("cancel Button Clicked");
+        }
+    }
 </script>
 </div>
 </main>
