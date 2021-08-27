@@ -1,11 +1,10 @@
 <?php
+session_start();
 include("dashboard.php");
 include("config.php");
-
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 $conn->close();
-
 ?>
 
 <main class="page-content">
