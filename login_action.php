@@ -6,7 +6,7 @@ if(isset($_POST)) {
     $count  = mysqli_num_rows($result);
     if($count==0) {
         $message = "Invalid Username or Password!";
-        header("location:login.php");
+        header("location:index.php");
     } else {
         $message = "You are successfully authenticated!";
         while($row = $result->fetch_assoc()) {

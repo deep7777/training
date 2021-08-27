@@ -78,10 +78,8 @@ include("app.php");
           
         </div>
         <div class="user-info">
-          <span class="user-name"><?php echo $first_name; ?>
-            <strong><?php echo $last_name; ?></strong>
+          <span class="user-name"><strong><?php echo $full_name; ?></strong>
           </span>
-          <span class="user-role">Administrator</span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
             <span>Online</span>
