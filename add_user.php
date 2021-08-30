@@ -10,18 +10,44 @@ if(isset($_POST)) {
     die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO users (first_name, last_name, email, mobile_no, address, username, pwd)
-        VALUES ('".$_POST["first_name"]."','".$_POST["last_name"]."','".$_POST["email"]."', '".$_POST["mobile_no"]."', '".$_POST["address"]."',
-        '".$_POST["username"]."', '".md5($_POST["password"])."'  )";
+    
 
-    if($_POST["first_name"]!='' && $_POST['last_name']!='')     
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    $file_name = '';
+    $target_path = "uploads/";
+
+    // Note  In your "php.ini" file, search for the file_uploads directive, and set it to On:
+    // file_uploads = On
+    // if your file is not uploading then check directory permissions if it is write instead of read.
+    // https://www.php.net/manual/en/function.move-uploaded-file.php
+    
+    $base_name = basename($_FILES["fileToUpload"]["name"]);
+    $imageFileType = strtolower(pathinfo($base_name,PATHINFO_EXTENSION));
+    $txt_file_name = "file_".rand().".".$imageFileType;
+    $target_path = $target_path . $txt_file_name;
+    
+    if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path)) {
+        echo "The file ".  basename( $_FILES['fileToUpload']['name']). 
+        " has been uploaded";
+        $file_name = $txt_file_name;
+    } else{
+        echo "There was an error uploading the file, please try again!";
+    }  
+
+   
+
+    if($_POST["first_name"]!='' && $_POST['last_name']!='')  {
+        $sql = "INSERT INTO users (first_name, last_name, email, mobile_no, address, username, pwd,file_name)
+        VALUES ('".$_POST["first_name"]."','".$_POST["last_name"]."','".$_POST["email"]."', '".$_POST["mobile_no"]."', '".$_POST["address"]."',
+        '".$_POST["username"]."', '".md5($_POST["password"])."', '".$file_name."' )";
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        $conn->close();
     }
 
-    $conn->close();
+    
 }
 
 ?>
@@ -33,7 +59,7 @@ if(isset($_POST)) {
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
-<form action="add_user.php" method="post">
+<form action="add_user.php" method="post" enctype="multipart/form-data">
     <div class="container register">
         <div class="row">
             <div class="col-md-3 register-left"></div>
@@ -66,10 +92,16 @@ if(isset($_POST)) {
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+                                    <label for="address" class="form-label">Address</label>
                                     <textarea name="address" class="form-control" id="address" rows="3"></textarea>
                                 </div>
-                                <input type="submit" class="btnRegister"  value="Register"/>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="fileToUpload" class="form-label">Select image to upload:</label>
+                                    <input type="file" name="fileToUpload" class="form-control" id="fileToUpload" rows="3"></textarea>
+                                </div>
+                                <input type="submit" name="submit" class="btnRegister"  value="Register"/>
                             </div>
                         </div>   
                     </div>

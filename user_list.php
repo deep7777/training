@@ -11,6 +11,7 @@ $conn->close();
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
+                <th>Img</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email </th>
@@ -22,7 +23,9 @@ $conn->close();
         </thead>
         <tbody>
             <?php while($row = $result->fetch_assoc()) { ?>
+                <?php $file_name = ($row["file_name"]!='' )? "uploads/".$row["file_name"] : "uploads/default.png"; ?>
                 <tr>
+                    <td><img title="<?php echo $file_name; ?>" width="50" height="50" src="<?php echo $file_name; ?>"></td>
                     <td><?php echo $row["first_name"]; ?></td>
                     <td><?php echo $row["last_name"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
