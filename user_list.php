@@ -33,8 +33,11 @@ $conn->close();
                     <td><?php echo $row["address"]; ?></td>
                     <td><?php echo $row["username"]; ?></td>
                     <td>
-                        <button onclick="return deleteUser(<?php echo $row["id"]; ?>)" type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Delete
+                        <a href="/edit_user.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary btn-sm rounded-0">
+                            <i class="fa fa-edit"> </i>
+                        </a>
+                        <button onclick="return deleteUser(<?php echo $row["id"]; ?>)" type="button" class="btn btn-danger btn-sm rounded-0">
+                            <i class="fa fa-trash"> </i>
                         </button>
                     </td>
                 </tr>
@@ -68,6 +71,10 @@ $conn->close();
         } else {
             console.log("cancel Button Clicked");
         }
+    }
+
+    function editUser() {
+
     }
 </script>
 </div>
