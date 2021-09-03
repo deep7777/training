@@ -4,12 +4,10 @@ include "config.php";
 if (($open = fopen("data/fake_job_postings.csv", "r")) !== FALSE) 
   {
   
-    while (($data = fgetcsv($open, 1000, ",")) !== FALSE) 
+    while (($data = fgetcsv($open, 500, ",")) !== FALSE) 
     {        
-     // print_r($data);	
       $array[] = $data; 
     }
-  
     fclose($open);
   }else {
   	echo "File is missing.";
