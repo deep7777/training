@@ -104,6 +104,19 @@ include("app.php");
               </ul>
             </div>
           </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-users"></i>
+              <span>News</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="/curl/index.php">Articles </a>
+                </li>
+              </ul>
+            </div>
+          </li>
           <!-- whatsapp -->
           <li class="sidebar-dropdown">
             <a href="#">
